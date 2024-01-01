@@ -45,5 +45,19 @@ function game(){
     }
 }
 
+function winner(){
+    let playerScore = gameScore[0];
+    let computerChoice = gameScore[1];
+
+    if(playerScore < computerChoice){
+        return 'COMPUTER WINS!';
+    }else if(computerChoice < playerScore){
+        return 'PLAYER WWINS!';
+    }else{
+        return 'DRAW!';
+    }
+}
+
 console.log(game());
 console.log(gameScore);
+console.log(winner());
