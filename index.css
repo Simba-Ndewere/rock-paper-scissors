@@ -1,3 +1,76 @@
 body {
-    background-color: lightblue
+    background-color: #5F9EA0
+}
+
+.container {
+    display: flex;
+}
+
+.scoreCard {
+    display: flex;
+    border: solid;
+    border-color: black;
+    height: 100px;
+    width: 600px;
+    border-radius: 10px;
+    margin: auto;
+    justify-content: space-between;
+    padding: 10px;
+    border-width: 2px;
+}
+
+.youScore {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    width: 100px;
+    align-items: center;
+}
+
+.computerScore {
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+
+.name {
+    display: flex;
+    color: white;
+    width: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bolder;
+    text-shadow: 2px 2px 4px #333;
+}
+
+.scoreNum {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    margin-top: 10px;
+    align-items: center;
+    height: 50px;
+    width: 80px;
+    justify-content: space-between;
+    background-color: white;
+    color: darkblue;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.score {
+    text-shadow: 2px 2px 4px #333;
+    font-weight: bold;
+}
+
+.num {
+    font-size: 30px;
+    font-weight: bold;
+    color: #3B4363
+}
+
+.card {
+    color: #2A46C0;
 }
