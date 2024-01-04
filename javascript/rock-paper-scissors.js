@@ -1,13 +1,12 @@
 let answerArray = ["ROCK", "PAPER", "SCISSORS"];
 let gameScore = [0,0];
 
-
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random() * 3);
     return answerArray[randomNumber];
 }
 
-function playSingeRound(playerChoice, computerChoice){
+function playSingleRound(playerChoice, computerChoice){
 
     if(playerChoice=='ROCK' && computerChoice=='SCISSORS'){
         gameScore[0] = gameScore[0] + 1;
