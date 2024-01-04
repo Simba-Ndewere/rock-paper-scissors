@@ -25,6 +25,7 @@ body {
     flex-direction: column;
     width: 100px;
     align-items: center;
+    font-family: sans-serif;
 }
 
 .computerScore {
@@ -43,6 +44,7 @@ body {
     font-size: 30px;
     font-weight: bolder;
     text-shadow: 2px 2px 4px #333;
+    font-family: sans-serif;
 }
 
 .scoreNum {
@@ -73,4 +75,30 @@ body {
 
 .card {
     color: #2A46C0;
+}
+
+.hands {
+    display: flex;
+    margin-top: 100px;
+    height: 400px;
+    width: 500px;
+    margin-left: 37%;
+    display: flex;
+    flex-direction: column;
+}
+
+.handsTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.handsBottom {
+    display: flex;
+    justify-content: center;
+}
+
+.hands img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
 }
