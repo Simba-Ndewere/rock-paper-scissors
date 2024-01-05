@@ -110,34 +110,27 @@ function showComputerChoice(userChoice) {
         case 2: firstPickImage.src = "icons/scissors.jpeg";
             break;
     }
-
-    const userScore = document.querySelector("#num1");
-    userScore.textContent = gameScore[0];
-
-    const compScore = document.querySelector("#num2");
-    compScore.textContent = gameScore[1];
     countDown(userChoice);
-   
-   // game.removeChild(results);
-   
 }
 
 function countDown(userChoice){
     let computerChoice = getComputerChoice();
     const result = document.querySelector(".result");
-
+    const compScore = document.querySelector("#num2");
     const handsShow = document.querySelector(".handsShow");
     const secondPick = document.createElement("div");
     const secondPickImage = document.createElement('img');
-    secondPick.appendChild(secondPickImage);
     const results = document.querySelector(".results");
- 
+    const userScore = document.querySelector("#num1");
     const countDownDiv = document.createElement("div");
+
     countDownDiv.classList.add("countDownDiv");
     handsShow.appendChild(countDownDiv);
+    secondPick.appendChild(secondPickImage);
+    
     let count = 3;
     const timer = setInterval(function() {
-        //console.log(count);
+
         countDownDiv.textContent = count;
         count--;
         if (count === -1) {
@@ -146,7 +139,8 @@ function countDown(userChoice){
           handsShow.removeChild(countDownDiv);
           handsShow.appendChild(secondPick);
           result.textContent = playSingleRound(numToString[userChoice],numToString[computerChoice]);
-
+          userScore.textContent = gameScore[0];
+          compScore.textContent = gameScore[1];
           const continueButton = document.createElement("button");
           continueButton.textContent = "CONTINUE";
           continueButton.addEventListener("click", continueClicked);
@@ -163,10 +157,14 @@ function countDown(userChoice){
         case 2: secondPickImage.src = "icons/scissors.jpeg";
             break;
     }
+   
 }
 
 function continueClicked() {
-    alert("Button clicked!");
+    //alert("Button clicked!");
+    const results = document.querySelector(".results");
+    game.removeChild(results);
+    handsDiv.style.display = "block";
   }
   
 
