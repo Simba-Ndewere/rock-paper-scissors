@@ -99,7 +99,7 @@ body {
     height: 300px;
     width: 600px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 100px;
     justify-content: space-between;
     font-family: sans-serif;
     font-size: 30px;
@@ -154,4 +154,17 @@ body {
     height: 200px;
     width: 200px;
     border-radius: 100px;
+}
+
+.countDownDiv {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: #3B4363;
 }

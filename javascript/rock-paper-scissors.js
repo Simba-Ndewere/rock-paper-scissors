@@ -65,7 +65,6 @@ function gameStart(choice) {
 
 function showComputerChoice(userChoice) {
 
-    let computerChoice = getComputerChoice();
     const game = document.querySelector("#game");
 
     const results = document.createElement("div");
@@ -89,9 +88,6 @@ function showComputerChoice(userChoice) {
     const result = document.createElement("div");
     result.classList.add("result");
 
-    const secondPick = document.createElement("div");
-    const secondPickImage = document.createElement('img');
-
     game.appendChild(results);
 
     results.appendChild(resultsTop);
@@ -104,9 +100,6 @@ function showComputerChoice(userChoice) {
     firstPick.appendChild(firstPickImage);
 
     handsShow.appendChild(result);
-
-    handsShow.appendChild(secondPick);
-    secondPick.appendChild(secondPickImage);
     
     switch (userChoice) {
         case 0: firstPickImage.src = "icons/rock.jpeg";
@@ -117,7 +110,44 @@ function showComputerChoice(userChoice) {
             break;
     }
 
-    switch (computerChoice) {
+    const userScore = document.querySelector("#num1");
+    userScore.textContent = gameScore[0];
+
+    const compScore = document.querySelector("#num2");
+    compScore.textContent = gameScore[1];
+    countDown(userChoice);
+}
+
+function countDown(userChoice){
+    let computerChoice = getComputerChoice();
+    const result = document.querySelector(".result");
+
+    const handsShow = document.querySelector(".handsShow");
+    const secondPick = document.createElement("div");
+    const secondPickImage = document.createElement('img');
+    secondPick.appendChild(secondPickImage);
+
+ 
+    const countDownDiv = document.createElement("div");
+    countDownDiv.classList.add("countDownDiv");
+    handsShow.appendChild(countDownDiv);
+
+    let count = 3;
+    const timer = setInterval(function() {
+        //console.log(count);
+        countDownDiv.textContent = count;
+        count--;
+        if (count === -1) {
+          clearInterval(timer);
+          console.log(computerChoice);
+          handsShow.removeChild(countDownDiv);
+          handsShow.appendChild(secondPick);
+          result.textContent = playSingleRound(numToString[userChoice],numToString[computerChoice]);
+        }
+        
+      }, 1000);
+    
+      switch (computerChoice) {
         case 0: secondPickImage.src = "icons/rock.jpeg";
             break;
         case 1: secondPickImage.src = "icons/paper.jpeg";
@@ -125,13 +155,6 @@ function showComputerChoice(userChoice) {
         case 2: secondPickImage.src = "icons/scissors.jpeg";
             break;
     }
-
-    result.textContent = playSingleRound(numToString[userChoice],numToString[computerChoice]);
-    const userScore = document.querySelector("#num1");
-    userScore.textContent = gameScore[0];
-
-    const compScore = document.querySelector("#num2");
-    compScore.textContent = gameScore[1];
-    //results.style.display ="none";
-    //handsDiv.style.display = "block";
+  
 }
+
