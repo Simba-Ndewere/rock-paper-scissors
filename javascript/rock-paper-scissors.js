@@ -1,6 +1,7 @@
 let gameScore = [0, 0];
 let handsDiv = document.getElementById("hands");
 let numToString = ['ROCK', 'PAPER', 'SCISSORS'];
+const game = document.querySelector("#game");
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
@@ -38,7 +39,7 @@ function playSingleRound(playerChoice, computerChoice) {
     }
 }
 
-function game() {
+function gamePlay() {
     for (let a = 0; a < 5; a++) {
         //let result = playSingeRound(getComputerChoice(), getComputerChoice());
         console.log(result);
@@ -64,9 +65,9 @@ function gameStart(choice) {
 }
 
 function showComputerChoice(userChoice) {
-
-    const game = document.querySelector("#game");
-
+    console.log("score");
+    console.log(gameScore);
+    let num = 0;
     const results = document.createElement("div");
     results.classList.add("results");
 
@@ -116,6 +117,9 @@ function showComputerChoice(userChoice) {
     const compScore = document.querySelector("#num2");
     compScore.textContent = gameScore[1];
     countDown(userChoice);
+   
+   // game.removeChild(results);
+   
 }
 
 function countDown(userChoice){
@@ -126,12 +130,11 @@ function countDown(userChoice){
     const secondPick = document.createElement("div");
     const secondPickImage = document.createElement('img');
     secondPick.appendChild(secondPickImage);
-
+    const results = document.querySelector(".results");
  
     const countDownDiv = document.createElement("div");
     countDownDiv.classList.add("countDownDiv");
     handsShow.appendChild(countDownDiv);
-
     let count = 3;
     const timer = setInterval(function() {
         //console.log(count);
@@ -143,6 +146,11 @@ function countDown(userChoice){
           handsShow.removeChild(countDownDiv);
           handsShow.appendChild(secondPick);
           result.textContent = playSingleRound(numToString[userChoice],numToString[computerChoice]);
+
+          const continueButton = document.createElement("button");
+          continueButton.textContent = "CONTINUE";
+          continueButton.addEventListener("click", continueClicked);
+          results.appendChild(continueButton);
         }
         
       }, 1000);
@@ -155,6 +163,12 @@ function countDown(userChoice){
         case 2: secondPickImage.src = "icons/scissors.jpeg";
             break;
     }
-  
 }
+
+function continueClicked() {
+    alert("Button clicked!");
+  }
+  
+
+
 

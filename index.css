@@ -96,7 +96,6 @@ body {
 
 .results {
     display: flex;
-    height: 300px;
     width: 600px;
     margin: auto;
     margin-top: 100px;
@@ -107,6 +106,7 @@ body {
     font-weight: bolder;
     text-shadow: 2px 2px 4px #333;
     flex-direction: column;
+    padding: 20px;
 }
 
 .handsShow {
@@ -127,12 +127,25 @@ body {
     display: flex;
     justify-content: space-between;
     width: 600px;
-    margin: auto;
     box-sizing: border-box;
     padding-left: 60px;
     padding-right: 20px;
+    padding-bottom: 15px;
 }
 
+.results button {
+    width: 150px;
+    margin: auto;
+    height: 40px;
+    border-radius: 10px;
+    border: solid;
+    border-color: black;
+    border-width: 2px;
+    color: #3B4363;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
 
 .handsTop {
     display: flex;
