@@ -68,7 +68,13 @@ body {
     font-weight: bold;
 }
 
-.num {
+.num1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #3B4363
+}
+
+.num2 {
     font-size: 40px;
     font-weight: bold;
     color: #3B4363

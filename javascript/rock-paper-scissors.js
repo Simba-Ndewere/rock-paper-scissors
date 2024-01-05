@@ -58,7 +58,7 @@ function winner() {
     }
 }
 
-function imageClicked(choice) {
+function gameStart(choice) {
     handsDiv.style.display = "none";
     showComputerChoice(choice);
 }
@@ -127,5 +127,11 @@ function showComputerChoice(userChoice) {
     }
 
     result.textContent = playSingleRound(numToString[userChoice],numToString[computerChoice]);
-    
+    const userScore = document.querySelector("#num1");
+    userScore.textContent = gameScore[0];
+
+    const compScore = document.querySelector("#num2");
+    compScore.textContent = gameScore[1];
+    //results.style.display ="none";
+    //handsDiv.style.display = "block";
 }
