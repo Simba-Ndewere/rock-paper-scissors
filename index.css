@@ -51,9 +51,10 @@ body {
     display: flex;
     flex-direction: column;
     padding-top: 5px;
+    padding-bottom: 5px;
     margin-top: 10px;
     align-items: center;
-    height: 50px;
+    height: 60px;
     width: 80px;
     justify-content: space-between;
     background-color: white;
@@ -68,7 +69,7 @@ body {
 }
 
 .num {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     color: #3B4363
 }
@@ -87,6 +88,46 @@ body {
     flex-direction: column;
 }
 
+.results {
+    display: flex;
+    height: 300px;
+    width: 600px;
+    margin: auto;
+    margin-top: 150px;
+    justify-content: space-between;
+    font-family: sans-serif;
+    font-size: 30px;
+    color: white;
+    font-weight: bolder;
+    text-shadow: 2px 2px 4px #333;
+    flex-direction: column;
+}
+
+.handsShow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    flex: 1;
+    padding-left: 5px;
+    justify-content: center;
+}
+
+.resultsTop {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin: auto;
+    box-sizing: border-box;
+    padding-left: 60px;
+    padding-right: 20px;
+}
+
+
 .handsTop {
     display: flex;
     justify-content: space-between;
@@ -98,6 +139,12 @@ body {
 }
 
 .hands img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+
+.handsShow img {
     height: 200px;
     width: 200px;
     border-radius: 100px;
