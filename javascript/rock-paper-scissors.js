@@ -185,6 +185,7 @@ function gameOverModal(){
       const computedStyles = window.getComputedStyle(existingDiv);
       const result = document.querySelector(".result");
       const handsShow = document.querySelector(".handsShow");
+      const resultTop = document.querySelector(".resultsTop");
 
       let topPosition = computedStyles.top;
       let leftPosition = computedStyles.left;
@@ -193,11 +194,13 @@ function gameOverModal(){
        const modal = document.createElement("div");
        modal.classList.add("modal");
        handsShow.appendChild(modal);
-
+       existingDiv.style.width = "850px";
+       resultTop.style.width = "850px";
        modal.style.position = "absolute";
        modal.style.top = topPosition;
        modal.style.left = leftPosition;
        modal.style.zIndex = parseInt(zIndex) + 1;
+       modal.style.margin = "auto";
 
        const parentRect = existingDiv.getBoundingClientRect();
        const modalRect = modal.getBoundingClientRect();
@@ -209,7 +212,7 @@ function gameOverModal(){
        modal.style.left = centerX + "px";
 
        result.textContent = "";
-
+      
        const title = document.createElement("div");
        title.classList.add("title");
        modal.appendChild(title);
@@ -218,6 +221,7 @@ function gameOverModal(){
        const gameResult = document.createElement("div");
        gameResult.classList.add("gameResult");
        modal.appendChild(gameResult);
+       
 
         if(gameScore[0] > gameScore[1]){
             gameResult.textContent = "YOU WON";
