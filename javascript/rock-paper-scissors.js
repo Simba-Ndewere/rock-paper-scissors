@@ -14,30 +14,30 @@ function playSingleRound(playerChoice, computerChoice) {
 
     if (playerChoice == 'ROCK' && computerChoice == 'SCISSORS') {
         gameScore[0] = gameScore[0] + 1;
-        return 'YOU WIN!'
+        return 'YOU WIN'
     } else if (computerChoice == 'ROCK' && playerChoice == 'SCISSORS') {
         gameScore[1] = gameScore[1] + 1;
-        return 'YOU LOSE!'
+        return 'YOU LOSE'
     }
 
     if (playerChoice == 'PAPER' && computerChoice == 'ROCK') {
         gameScore[0] = gameScore[0] + 1;
-        return 'YOU WIN!'
+        return 'YOU WIN'
     } else if (computerChoice == 'PAPER' && playerChoice == 'ROCK') {
         gameScore[1] = gameScore[1] + 1;
-        return 'YOU LOSE!'
+        return 'YOU LOSE'
     }
 
     if (playerChoice == 'SCISSORS' && computerChoice == 'PAPER') {
         gameScore[0] = gameScore[0] + 1;
-        return 'YOU WIN!'
+        return 'YOU WIN'
     } else if (computerChoice == 'SCISSORS' && playerChoice == 'PAPER') {
         gameScore[1] = gameScore[1] + 1;
-        return 'YOU LOSE!'
+        return 'YOU LOSE'
     }
 
     if (playerChoice == computerChoice) {
-        return 'DRAW!';
+        return 'DRAW';
     }
 }
 
