@@ -146,7 +146,7 @@ function countDown(userChoice){
             continueButton.addEventListener("click", continueClicked);
             results.appendChild(continueButton);
           }else{
-            createGameOverModal();
+            gameOverModal();
           }
         }
         
@@ -181,6 +181,53 @@ function checkScores(){
 
 function gameOverModal(){
     
+      const existingDiv = document.querySelector(".results");
+      const computedStyles = window.getComputedStyle(existingDiv);
+      const result = document.querySelector(".result");
+      const handsShow = document.querySelector(".handsShow");
+
+      let topPosition = computedStyles.top;
+      let leftPosition = computedStyles.left;
+      let zIndex = computedStyles.zIndex;
+
+       const modal = document.createElement("div");
+       modal.classList.add("modal");
+       handsShow.appendChild(modal);
+
+       modal.style.position = "absolute";
+       modal.style.top = topPosition;
+       modal.style.left = leftPosition;
+       modal.style.zIndex = parseInt(zIndex) + 1;
+
+       const parentRect = existingDiv.getBoundingClientRect();
+       const modalRect = modal.getBoundingClientRect();
+
+       const centerX = parentRect.left + (parentRect.width - modalRect.width) / 2;
+       const centerY = parentRect.top + (parentRect.height - modalRect.height) / 2;
+
+       modal.style.top = centerY + "px";
+       modal.style.left = centerX + "px";
+
+       result.textContent = "";
+
+       const title = document.createElement("div");
+       title.classList.add("title");
+       modal.appendChild(title);
+       title.textContent = "GAME OVER"
+
+       const gameResult = document.createElement("div");
+       gameResult.classList.add("gameResult");
+       modal.appendChild(gameResult);
+
+        if(gameScore[0] > gameScore[1]){
+            gameResult.textContent = "YOU WON";
+        }else{
+            gameResult.textContent = "COMPUTER WON";
+        }
+       
+       const button = document.createElement("button");
+       button.textContent = "NEW GAME";
+       modal.appendChild(button);
 }
 
 
