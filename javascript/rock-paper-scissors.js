@@ -39,26 +39,6 @@ function playSingleRound(playerChoice, computerChoice) {
     }
 }
 
-function gamePlay() {
-    for (let a = 0; a < 5; a++) {
-        //let result = playSingeRound(getComputerChoice(), getComputerChoice());
-        console.log(result);
-    }
-}
-
-function winner() {
-    let playerScore = gameScore[0];
-    let computerChoice = gameScore[1];
-
-    if (playerScore < computerChoice) {
-        return 'COMPUTER WINS!';
-    } else if (computerChoice < playerScore) {
-        return 'YOU WON!';
-    } else {
-        return 'DRAW!';
-    }
-}
-
 function gameStart(choice) {
     handsDiv.style.display = "none";
     showComputerChoice(choice);
@@ -164,7 +144,6 @@ function countDown(userChoice){
 }
 
 function continueClicked() {
-    //alert("Button clicked!");
     const results = document.querySelector(".results");
     game.removeChild(results);
     handsDiv.style.display = "block";
@@ -172,8 +151,7 @@ function continueClicked() {
 
 function checkScores(){
     for(let a = 0; a < gameScore.length;a++){
-        if(gameScore[a] ==3 ){
-            console.log("game finished");
+        if(gameScore[a] == 3 ){
             return true;
         }
     }
@@ -232,6 +210,11 @@ function gameOverModal(){
        const button = document.createElement("button");
        button.textContent = "NEW GAME";
        modal.appendChild(button);
+       button.addEventListener("click", restartGame);
+}
+
+function restartGame(){
+    location.reload();
 }
 
 
