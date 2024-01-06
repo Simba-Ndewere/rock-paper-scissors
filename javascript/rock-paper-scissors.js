@@ -53,7 +53,7 @@ function winner() {
     if (playerScore < computerChoice) {
         return 'COMPUTER WINS!';
     } else if (computerChoice < playerScore) {
-        return 'PLAYER WWINS!';
+        return 'YOU WON!';
     } else {
         return 'DRAW!';
     }
@@ -65,9 +65,7 @@ function gameStart(choice) {
 }
 
 function showComputerChoice(userChoice) {
-    console.log("score");
-    console.log(gameScore);
-    let num = 0;
+
     const results = document.createElement("div");
     results.classList.add("results");
 
@@ -127,7 +125,7 @@ function countDown(userChoice){
     countDownDiv.classList.add("countDownDiv");
     handsShow.appendChild(countDownDiv);
     secondPick.appendChild(secondPickImage);
-    
+
     let count = 3;
     const timer = setInterval(function() {
 
@@ -141,10 +139,15 @@ function countDown(userChoice){
           result.textContent = playSingleRound(numToString[userChoice],numToString[computerChoice]);
           userScore.textContent = gameScore[0];
           compScore.textContent = gameScore[1];
-          const continueButton = document.createElement("button");
-          continueButton.textContent = "CONTINUE";
-          continueButton.addEventListener("click", continueClicked);
-          results.appendChild(continueButton);
+          gameDone = checkScores();
+          if(!gameDone){
+            const continueButton = document.createElement("button");
+            continueButton.textContent = "CONTINUE";
+            continueButton.addEventListener("click", continueClicked);
+            results.appendChild(continueButton);
+          }else{
+            createGameOverModal();
+          }
         }
         
       }, 1000);
@@ -165,7 +168,22 @@ function continueClicked() {
     const results = document.querySelector(".results");
     game.removeChild(results);
     handsDiv.style.display = "block";
-  }
+}
+
+function checkScores(){
+    for(let a = 0; a < gameScore.length;a++){
+        if(gameScore[a] ==3 ){
+            console.log("game finished");
+            return true;
+        }
+    }
+}
+
+function gameOverModal(){
+    
+}
+
+
   
 
 
