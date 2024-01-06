@@ -2,6 +2,8 @@ let gameScore = [0, 0];
 let handsDiv = document.getElementById("hands");
 let numToString = ['ROCK', 'PAPER', 'SCISSORS'];
 const game = document.querySelector("#game");
+const footer = document.querySelector(".footer");
+const middle = document.querySelector(".middle");
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
@@ -67,7 +69,7 @@ function showComputerChoice(userChoice) {
     const result = document.createElement("div");
     result.classList.add("result");
 
-    game.appendChild(results);
+    middle.appendChild(results);
 
     results.appendChild(resultsTop);
     results.appendChild(handsShow);
@@ -106,7 +108,7 @@ function countDown(userChoice){
     handsShow.appendChild(countDownDiv);
     secondPick.appendChild(secondPickImage);
 
-    let count = 3;
+    let count = 2;
     const timer = setInterval(function() {
 
         countDownDiv.textContent = count;
@@ -144,8 +146,9 @@ function countDown(userChoice){
 }
 
 function continueClicked() {
+ 
     const results = document.querySelector(".results");
-    game.removeChild(results);
+    middle.removeChild(results);
     handsDiv.style.display = "block";
 }
 
@@ -174,6 +177,7 @@ function gameOverModal(){
        handsShow.appendChild(modal);
        existingDiv.style.width = "850px";
        resultTop.style.width = "850px";
+       handsShow.style.width = "850px";
        modal.style.position = "absolute";
        modal.style.top = topPosition;
        modal.style.left = leftPosition;
@@ -200,7 +204,6 @@ function gameOverModal(){
        gameResult.classList.add("gameResult");
        modal.appendChild(gameResult);
        
-
         if(gameScore[0] > gameScore[1]){
             gameResult.textContent = "YOU WON";
         }else{
