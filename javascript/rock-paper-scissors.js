@@ -173,6 +173,9 @@ function gameOverModal() {
 
     const modal = document.createElement("div");
     const existingDiv = document.querySelector(".results");
+
+    const result = document.querySelector(".result");
+    result.textContent = "";
     modal.classList.add("modal");
     const title = document.createElement("div");
     title.classList.add("title");
