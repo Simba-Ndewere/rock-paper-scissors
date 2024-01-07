@@ -134,10 +134,6 @@ function countDown(userChoice) {
             gameDone = checkScores();
             if (!gameDone) {
                 continueButton.style.display = "block";
-                /*const continueButton = document.createElement("button");
-                continueButton.textContent = "CONTINUE";
-                continueButton.addEventListener("click", continueClicked);
-                results.appendChild(continueButton);*/
             } else {
                 gameOverModal();
             }
@@ -206,6 +202,7 @@ function gameOverModal() {
 function restartGame() {
     location.reload();
 }
+
 
 
 
