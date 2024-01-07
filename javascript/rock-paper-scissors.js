@@ -100,13 +100,23 @@ function countDown(userChoice) {
     const handsShow = document.querySelector(".handsShow");
     const secondPick = document.createElement("div");
     const secondPickImage = document.createElement('img');
-    const results = document.querySelector(".results");
     const userScore = document.querySelector("#num1");
     const countDownDiv = document.createElement("div");
+    const results = document.querySelector(".results");
 
     countDownDiv.classList.add("countDownDiv");
     handsShow.appendChild(countDownDiv);
     secondPick.appendChild(secondPickImage);
+
+    const continueButton = document.createElement("button");
+    continueButton.textContent = "CONTINUE";
+    continueButton.addEventListener("click", continueClicked);
+    
+    const divButton = document.createElement("div");
+    results.appendChild(divButton);
+    divButton.classList.add("divButton");
+    divButton.appendChild(continueButton);
+    continueButton.style.display = "none";
 
     let count = 2;
     const timer = setInterval(function () {
@@ -123,10 +133,11 @@ function countDown(userChoice) {
             compScore.textContent = gameScore[1];
             gameDone = checkScores();
             if (!gameDone) {
-                const continueButton = document.createElement("button");
+                continueButton.style.display = "block";
+                /*const continueButton = document.createElement("button");
                 continueButton.textContent = "CONTINUE";
                 continueButton.addEventListener("click", continueClicked);
-                results.appendChild(continueButton);
+                results.appendChild(continueButton);*/
             } else {
                 gameOverModal();
             }
@@ -142,11 +153,9 @@ function countDown(userChoice) {
         case 2: secondPickImage.src = "icons/scissors.jpeg";
             break;
     }
-
 }
 
 function continueClicked() {
-
     const results = document.querySelector(".results");
     middle.removeChild(results);
     handsDiv.style.display = "block";
@@ -162,56 +171,6 @@ function checkScores() {
 
 function gameOverModal() {
 
-    /*const existingDiv = document.querySelector(".results");
-    const computedStyles = window.getComputedStyle(existingDiv);
-    const result = document.querySelector(".result");
-    const handsShow = document.querySelector(".handsShow");
-    const resultTop = document.querySelector(".resultsTop");
-
-    let topPosition = computedStyles.top;
-    let leftPosition = computedStyles.left;
-    let zIndex = computedStyles.zIndex;
-
-     const modal = document.createElement("div");
-     modal.classList.add("modal");
-     handsShow.appendChild(modal);
-     existingDiv.style.width = "650px";
-     resultTop.style.width = "650px";
-     handsShow.style.width = "650px";
-     modal.style.top = topPosition;
-     modal.style.left = leftPosition;
-     modal.style.zIndex = parseInt(zIndex) + 1;
-  
-     const parentRect = existingDiv.getBoundingClientRect();
-     const modalRect = modal.getBoundingClientRect();
-
-     const centerX = parentRect.left + (parentRect.width - modalRect.width) / 2;
-     const centerY = parentRect.top + (parentRect.height - modalRect.height) / 2;
-
-     modal.style.top = centerY + "px";
-     modal.style.left = centerX + "px";
-
-     result.textContent = "";
-    
-     const title = document.createElement("div");
-     title.classList.add("title");
-     modal.appendChild(title);
-     title.textContent = "GAME OVER"
-
-     const gameResult = document.createElement("div");
-     gameResult.classList.add("gameResult");
-     modal.appendChild(gameResult);
-     
-      if(gameScore[0] > gameScore[1]){
-          gameResult.textContent = "YOU WON";
-      }else{
-          gameResult.textContent = "COMPUTER WON";
-      }
-     
-     const button = document.createElement("button");
-     button.textContent = "NEW GAME";
-     modal.appendChild(button);
-     button.addEventListener("click", restartGame);*/
     const modal = document.createElement("div");
     const existingDiv = document.querySelector(".results");
     modal.classList.add("modal");
