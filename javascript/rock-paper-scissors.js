@@ -81,7 +81,7 @@ function showComputerChoice(userChoice) {
     firstPick.appendChild(firstPickImage);
 
     handsShow.appendChild(result);
-    
+
     switch (userChoice) {
         case 0: firstPickImage.src = "icons/rock.jpeg";
             break;
@@ -93,7 +93,7 @@ function showComputerChoice(userChoice) {
     countDown(userChoice);
 }
 
-function countDown(userChoice){
+function countDown(userChoice) {
     let computerChoice = getComputerChoice();
     const result = document.querySelector(".result");
     const compScore = document.querySelector("#num2");
@@ -109,32 +109,32 @@ function countDown(userChoice){
     secondPick.appendChild(secondPickImage);
 
     let count = 2;
-    const timer = setInterval(function() {
+    const timer = setInterval(function () {
 
         countDownDiv.textContent = count;
         count--;
         if (count === -1) {
-          clearInterval(timer);
-          console.log(computerChoice);
-          handsShow.removeChild(countDownDiv);
-          handsShow.appendChild(secondPick);
-          result.textContent = playSingleRound(numToString[userChoice],numToString[computerChoice]);
-          userScore.textContent = gameScore[0];
-          compScore.textContent = gameScore[1];
-          gameDone = checkScores();
-          if(!gameDone){
-            const continueButton = document.createElement("button");
-            continueButton.textContent = "CONTINUE";
-            continueButton.addEventListener("click", continueClicked);
-            results.appendChild(continueButton);
-          }else{
-            gameOverModal();
-          }
+            clearInterval(timer);
+            console.log(computerChoice);
+            handsShow.removeChild(countDownDiv);
+            handsShow.appendChild(secondPick);
+            result.textContent = playSingleRound(numToString[userChoice], numToString[computerChoice]);
+            userScore.textContent = gameScore[0];
+            compScore.textContent = gameScore[1];
+            gameDone = checkScores();
+            if (!gameDone) {
+                const continueButton = document.createElement("button");
+                continueButton.textContent = "CONTINUE";
+                continueButton.addEventListener("click", continueClicked);
+                results.appendChild(continueButton);
+            } else {
+                gameOverModal();
+            }
         }
-        
-      }, 1000);
-    
-      switch (computerChoice) {
+
+    }, 1000);
+
+    switch (computerChoice) {
         case 0: secondPickImage.src = "icons/rock.jpeg";
             break;
         case 1: secondPickImage.src = "icons/paper.jpeg";
@@ -142,85 +142,111 @@ function countDown(userChoice){
         case 2: secondPickImage.src = "icons/scissors.jpeg";
             break;
     }
-   
+
 }
 
 function continueClicked() {
- 
+
     const results = document.querySelector(".results");
     middle.removeChild(results);
     handsDiv.style.display = "block";
 }
 
-function checkScores(){
-    for(let a = 0; a < gameScore.length;a++){
-        if(gameScore[a] == 3 ){
+function checkScores() {
+    for (let a = 0; a < gameScore.length; a++) {
+        if (gameScore[a] == 3) {
             return true;
         }
     }
 }
 
-function gameOverModal(){
+function gameOverModal() {
+
+    /*const existingDiv = document.querySelector(".results");
+    const computedStyles = window.getComputedStyle(existingDiv);
+    const result = document.querySelector(".result");
+    const handsShow = document.querySelector(".handsShow");
+    const resultTop = document.querySelector(".resultsTop");
+
+    let topPosition = computedStyles.top;
+    let leftPosition = computedStyles.left;
+    let zIndex = computedStyles.zIndex;
+
+     const modal = document.createElement("div");
+     modal.classList.add("modal");
+     handsShow.appendChild(modal);
+     existingDiv.style.width = "650px";
+     resultTop.style.width = "650px";
+     handsShow.style.width = "650px";
+     modal.style.top = topPosition;
+     modal.style.left = leftPosition;
+     modal.style.zIndex = parseInt(zIndex) + 1;
+  
+     const parentRect = existingDiv.getBoundingClientRect();
+     const modalRect = modal.getBoundingClientRect();
+
+     const centerX = parentRect.left + (parentRect.width - modalRect.width) / 2;
+     const centerY = parentRect.top + (parentRect.height - modalRect.height) / 2;
+
+     modal.style.top = centerY + "px";
+     modal.style.left = centerX + "px";
+
+     result.textContent = "";
     
-      const existingDiv = document.querySelector(".results");
-      const computedStyles = window.getComputedStyle(existingDiv);
-      const result = document.querySelector(".result");
-      const handsShow = document.querySelector(".handsShow");
-      const resultTop = document.querySelector(".resultsTop");
+     const title = document.createElement("div");
+     title.classList.add("title");
+     modal.appendChild(title);
+     title.textContent = "GAME OVER"
 
-      let topPosition = computedStyles.top;
-      let leftPosition = computedStyles.left;
-      let zIndex = computedStyles.zIndex;
+     const gameResult = document.createElement("div");
+     gameResult.classList.add("gameResult");
+     modal.appendChild(gameResult);
+     
+      if(gameScore[0] > gameScore[1]){
+          gameResult.textContent = "YOU WON";
+      }else{
+          gameResult.textContent = "COMPUTER WON";
+      }
+     
+     const button = document.createElement("button");
+     button.textContent = "NEW GAME";
+     modal.appendChild(button);
+     button.addEventListener("click", restartGame);*/
+    const modal = document.createElement("div");
+    const existingDiv = document.querySelector(".results");
+    modal.classList.add("modal");
+    const title = document.createElement("div");
+    title.classList.add("title");
+    modal.appendChild(title);
+    title.textContent = "GAME OVER"
+    const gameResult = document.createElement("div");
+    gameResult.classList.add("gameResult");
+    modal.appendChild(gameResult);
+    if (gameScore[0] > gameScore[1]) {
+        gameResult.textContent = "YOU WON";
+    } else {
+        gameResult.textContent = "COMPUTER WON";
+    }
+    const button = document.createElement("button");
+    button.textContent = "NEW GAME";
+    modal.appendChild(button);
+    button.addEventListener("click", restartGame);
+    existingDiv.appendChild(modal);
 
-       const modal = document.createElement("div");
-       modal.classList.add("modal");
-       handsShow.appendChild(modal);
-       existingDiv.style.width = "650px";
-       resultTop.style.width = "650px";
-       handsShow.style.width = "650px";
-       modal.style.top = topPosition;
-       modal.style.left = leftPosition;
-       modal.style.zIndex = parseInt(zIndex) + 1;
-    
-
-       const parentRect = existingDiv.getBoundingClientRect();
-       const modalRect = modal.getBoundingClientRect();
-
-       const centerX = parentRect.left + (parentRect.width - modalRect.width) / 2;
-       const centerY = parentRect.top + (parentRect.height - modalRect.height) / 2;
-
-       modal.style.top = centerY + "px";
-       modal.style.left = centerX + "px";
-
-       result.textContent = "";
-      
-       const title = document.createElement("div");
-       title.classList.add("title");
-       modal.appendChild(title);
-       title.textContent = "GAME OVER"
-
-       const gameResult = document.createElement("div");
-       gameResult.classList.add("gameResult");
-       modal.appendChild(gameResult);
-       
-        if(gameScore[0] > gameScore[1]){
-            gameResult.textContent = "YOU WON";
-        }else{
-            gameResult.textContent = "COMPUTER WON";
-        }
-       
-       const button = document.createElement("button");
-       button.textContent = "NEW GAME";
-       modal.appendChild(button);
-       button.addEventListener("click", restartGame);
+    modal.style.position = "fixed";
+    modal.style.top = "50%";
+    modal.style.left = "50%";
+    modal.style.transform = "translate(-50%, -50%)";
+    modal.style.zIndex = "999";
+    modal.style.display = "block";
 }
 
-function restartGame(){
+function restartGame() {
     location.reload();
 }
 
 
-  
+
 
 
 
