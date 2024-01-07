@@ -175,14 +175,13 @@ function gameOverModal(){
        const modal = document.createElement("div");
        modal.classList.add("modal");
        handsShow.appendChild(modal);
-       existingDiv.style.width = "850px";
-       resultTop.style.width = "850px";
-       handsShow.style.width = "850px";
-       modal.style.position = "absolute";
+       existingDiv.style.width = "650px";
+       resultTop.style.width = "650px";
+       handsShow.style.width = "650px";
        modal.style.top = topPosition;
        modal.style.left = leftPosition;
        modal.style.zIndex = parseInt(zIndex) + 1;
-       modal.style.margin = "auto";
+    
 
        const parentRect = existingDiv.getBoundingClientRect();
        const modalRect = modal.getBoundingClientRect();
